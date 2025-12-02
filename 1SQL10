@@ -29,7 +29,28 @@ INSERT INTO tblPerson (ID, Name, Email, GenderId) VALUES (6, 'Dan', 'd@d.com', 4
 
 --------------------------------------------------------------
 
+select * from [dbo].[tblgender];
 
+select * from [dbo].[tblperson];
+
+ALTER TABLE tblPerson
+ADD CONSTRAINT FK_Person_Gender
+FOREIGN KEY (GenderId) REFERENCES tblgender(ID);
+
+alter table tblperson 
+ADD age int;
+
+delete from tblperson where ID=7;
+INSERT INTO tblPerson (ID, Name, Email, GenderId,age) VALUES (7, 'Danny', 'd@dy.com', 4, -900);
+
+
+alter table [dbo].[tblperson]
+drop constraint [CK_tblperson_Age]; /* drop constraint*/
+
+-- now create constraint manually
+alter table [dbo].[tblperson]
+add constraint CK_tblperson_age CHECK(age>0 and age<150);
+--------------------------------------------------------------
 
 
 
